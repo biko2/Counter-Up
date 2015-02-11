@@ -75,7 +75,15 @@
         };
 
         // Perform counts when the element gets into view
-        $this.waypoint(counterUpper, { offset: '100%', triggerOnce: true });
+        //$this.waypoint(counterUpper, { offset: '100%', triggerOnce: true });
+        $this.waypoint = new Waypoint({
+          element: $this,
+          handler: function(direction) {
+            counterUpper();
+            this.destroy();
+          },
+          offset: '100%'
+        });
     });
 
   };
